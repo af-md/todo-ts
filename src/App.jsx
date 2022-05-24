@@ -11,7 +11,7 @@ const App = () => {
   }
 
   const removeTodo = (todo) => {
-    const newTodos = todos.filter(item => item !== todo);
+    const newTodos = todos.filter(item => item.id !== todo.id);
     setTodos(newTodos);
   }
   return (

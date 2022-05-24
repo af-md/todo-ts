@@ -3,11 +3,12 @@ import { useState } from 'react';
 const InputSection = ({ saveTodo, todos }) => {
     const [val, setVal] = useState('')
     const addTodo = () => {
-        if (todos.filter(item => item === val).length > 0) {
+        if (todos.filter(item => item.val === val).length > 0) {
             setVal('');
             alert('todo already exists') 
         } else {
-            saveTodo(val);
+            const id = todos.length + 1;
+            saveTodo({ val, id})
             setVal('');
         }
     }
