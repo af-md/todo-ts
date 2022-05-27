@@ -1,6 +1,12 @@
-import { useState } from 'react';
+import React, { useState, FC, ChangeEventHandler, ChangeEvent } from 'react';
+import {Todo} from '../App'
 
-const InputSection = ({ saveTodo, todos }) => {
+interface InputSectionProps {
+    saveTodo: (todo: Todo) => void
+    todos: Todo[]
+}
+
+const InputSection : FC<InputSectionProps> = ({ saveTodo, todos }) => {
     const [val, setVal] = useState('')
     const addTodo = () => {
         if (todos.filter(item => item.val === val).length > 0) {
@@ -13,7 +19,7 @@ const InputSection = ({ saveTodo, todos }) => {
         }
     }
 
-    const handleChange  = (e) => {
+    const handleChange: ChangeEventHandler<HTMLInputElement>  = (e) => {
         setVal(e.target.value)
     }
   return (
